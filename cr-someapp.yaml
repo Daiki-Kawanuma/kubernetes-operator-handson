@@ -1,0 +1,7 @@
+apiVersion: "project-respite.com/v1"
+kind: SomeApp
+metadata:
+  name: someapp-test
+spec:
+  image: registry.redhat.io/ubi8/ubi
+  replicas: 2

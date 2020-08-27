@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: someapp-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: someapp-operator
+  template:
+    metadata:
+      labels:
+        app: someapp-operator
+    spec:
+      serviceAccountName: someapp-operator
+      containers:
+        - name: operator-container
+          image: image-registry.openshift-image-registry.svc:5000/kawanuma/someapp-operator:1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
