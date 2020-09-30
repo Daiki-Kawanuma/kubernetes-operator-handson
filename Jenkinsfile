@@ -15,7 +15,7 @@ pipeline {
         stage('Docker Run') {
             steps {
                 sh '''
-                    docker run --name someapp-operator someapp-operator:1.0
+                    docker run -d --name someapp-operator someapp-operator:1.0
                     docker ps
                 '''
             }
