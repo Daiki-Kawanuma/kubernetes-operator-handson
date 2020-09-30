@@ -7,9 +7,25 @@ pipeline {
     stages {
         stage('Docker Build') {
             steps {
-                sh """
+                sh '''
                     docker build -t someapp-operator:1.0 operator
-                """
+                '''
+            }
+        }
+        stage('Docker Run') {
+            steps {
+                sh '''
+                    docker run --name someapp-operator someapp-operator:1.0
+                    docker ps
+                '''
+            }
+        }
+        stage('Docker Stop') {
+            steps {
+                sh '''
+                    docker stop someapp-operator
+                    docker rm someapp-operator
+                '''
             }
         }
     }
