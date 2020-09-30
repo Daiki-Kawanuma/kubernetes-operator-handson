@@ -7,10 +7,9 @@ pipeline {
     stages {
         stage('Docker Build') {
             steps {
-                sh
-                '''
+                sh """
                     docker build -t someapp-operator:1.0 operator
-                '''
+                """
             }
         }
     }
